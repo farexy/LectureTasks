@@ -1,6 +1,6 @@
 ﻿namespace Task2
 {
-    partial class Task2Form
+    partial class Task2_3Form
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -40,6 +40,8 @@
             this.EncryptButton = new System.Windows.Forms.Button();
             this.DecryptButton = new System.Windows.Forms.Button();
             this.NameKeyLabel = new System.Windows.Forms.Label();
+            this.CryptListBox = new System.Windows.Forms.ListBox();
+            this.CryptButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.KeyTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +50,7 @@
             this.TextsListBox.FormattingEnabled = true;
             this.TextsListBox.Location = new System.Drawing.Point(121, 12);
             this.TextsListBox.Name = "TextsListBox";
-            this.TextsListBox.Size = new System.Drawing.Size(293, 173);
+            this.TextsListBox.Size = new System.Drawing.Size(293, 82);
             this.TextsListBox.TabIndex = 0;
             this.TextsListBox.SelectedIndexChanged += new System.EventHandler(this.TextsListBox_SelectedIndexChanged);
             // 
@@ -133,21 +135,21 @@
             // 
             // EncryptButton
             // 
-            this.EncryptButton.Location = new System.Drawing.Point(12, 95);
+            this.EncryptButton.Location = new System.Drawing.Point(12, 62);
             this.EncryptButton.Name = "EncryptButton";
-            this.EncryptButton.Size = new System.Drawing.Size(103, 23);
+            this.EncryptButton.Size = new System.Drawing.Size(103, 35);
             this.EncryptButton.TabIndex = 9;
-            this.EncryptButton.Text = "Закодировать";
+            this.EncryptButton.Text = "Закодировать по ключу";
             this.EncryptButton.UseVisualStyleBackColor = true;
             this.EncryptButton.Click += new System.EventHandler(this.EncryptButton_Click);
             // 
             // DecryptButton
             // 
-            this.DecryptButton.Location = new System.Drawing.Point(12, 124);
+            this.DecryptButton.Location = new System.Drawing.Point(12, 103);
             this.DecryptButton.Name = "DecryptButton";
-            this.DecryptButton.Size = new System.Drawing.Size(103, 23);
+            this.DecryptButton.Size = new System.Drawing.Size(103, 35);
             this.DecryptButton.TabIndex = 10;
-            this.DecryptButton.Text = "Декодировать";
+            this.DecryptButton.Text = "Декодировать по ключу";
             this.DecryptButton.UseVisualStyleBackColor = true;
             this.DecryptButton.Click += new System.EventHandler(this.DecryptButton_Click);
             // 
@@ -160,11 +162,31 @@
             this.NameKeyLabel.TabIndex = 11;
             this.NameKeyLabel.Text = "Ключ:";
             // 
-            // Task2Form
+            // CryptListBox
+            // 
+            this.CryptListBox.FormattingEnabled = true;
+            this.CryptListBox.Location = new System.Drawing.Point(121, 103);
+            this.CryptListBox.Name = "CryptListBox";
+            this.CryptListBox.Size = new System.Drawing.Size(293, 82);
+            this.CryptListBox.TabIndex = 12;
+            // 
+            // CryptButton
+            // 
+            this.CryptButton.Location = new System.Drawing.Point(12, 144);
+            this.CryptButton.Name = "CryptButton";
+            this.CryptButton.Size = new System.Drawing.Size(103, 35);
+            this.CryptButton.TabIndex = 13;
+            this.CryptButton.Text = "Криптоанализ";
+            this.CryptButton.UseVisualStyleBackColor = true;
+            this.CryptButton.Click += new System.EventHandler(this.CryptButton_Click);
+            // 
+            // Task2_3Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(426, 314);
+            this.Controls.Add(this.CryptButton);
+            this.Controls.Add(this.CryptListBox);
             this.Controls.Add(this.NameKeyLabel);
             this.Controls.Add(this.DecryptButton);
             this.Controls.Add(this.EncryptButton);
@@ -177,8 +199,8 @@
             this.Controls.Add(this.RomanRadioButton);
             this.Controls.Add(this.CyrillicRadioButton);
             this.Controls.Add(this.TextsListBox);
-            this.Name = "Task2Form";
-            this.Text = "Task2";
+            this.Name = "Task2_3Form";
+            this.Text = "Task2_3";
             ((System.ComponentModel.ISupportInitialize)(this.KeyTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -199,6 +221,8 @@
         private System.Windows.Forms.Button EncryptButton;
         private System.Windows.Forms.Button DecryptButton;
         private System.Windows.Forms.Label NameKeyLabel;
+        private System.Windows.Forms.ListBox CryptListBox;
+        private System.Windows.Forms.Button CryptButton;
     }
 }
 

@@ -48,11 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caesar.cs" />
-    <Compile Include="Task2Form.cs">
+    <Compile Include="Cryptanalysis.cs" />
+    <Compile Include="Task2_3Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Task2Form.Designer.cs">
-      <DependentUpon>Task2Form.cs</DependentUpon>
+    <Compile Include="Task2_3Form.Designer.cs">
+      <DependentUpon>Task2_3Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,8 +67,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Task2Form.resx">
-      <DependentUpon>Task2Form.cs</DependentUpon>
+    <EmbeddedResource Include="Task2_3Form.resx">
+      <DependentUpon>Task2_3Form.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -1,22 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Task2
 {
-    public partial class Task2Form : Form
+    public partial class Task2_3Form : Form
     {
         private string regex; //Регулярное выражение
         Caesar caesar = new Caesar();
+        Cryptanalysis cryptanalysis = new Cryptanalysis();
 
-        public Task2Form()
+        public Task2_3Form()
         {
             InitializeComponent();
             CyrillicRadioButton.Checked = true;
@@ -68,7 +64,7 @@ namespace Task2
         }
         #endregion
 
-        //Кодирование и декодирование
+        //Кодирование, декодирование и криптоанализ
         #region
         //Закодировать
         private void EncryptButton_Click(object sender, EventArgs e)
@@ -77,25 +73,63 @@ namespace Task2
             caesar.Result = "";
             caesar.Input = InputTextBox.Text;
             caesar.Encrypt();
-            ResultTextBox.Text = caesar.Result;
             if (caesar.Alph == "C")
+            {
+                caesar.CyrillicTexts.Add(caesar.Input);
+                caesar.CyrillicTexts.Add(caesar.Result);
                 AddCyrillic();
-            else
+            }
+            else if (caesar.Alph == "R")
+            {
+                caesar.RomanTexts.Add(caesar.Input);
+                caesar.RomanTexts.Add(caesar.Result);
                 AddRoman();
+            }
+            ResultTextBox.Text = caesar.Result;
         }
 
         //Декодировать
         private void DecryptButton_Click(object sender, EventArgs e)
         {
+            CryptListBox.Items.Clear();
             ResultTextBox.Text = "";
             caesar.Result = "";
             caesar.Input = InputTextBox.Text;
-            caesar.Decrypt();
-            ResultTextBox.Text = caesar.Result;
+            caesar.Decrypt(caesar.Key);
             if (caesar.Alph == "C")
+            {
+                caesar.CyrillicTexts.Add(caesar.Input);
+                caesar.CyrillicTexts.Add(caesar.Result);
                 AddCyrillic();
-            else
+            }
+            else if (caesar.Alph == "R")
+            {
+                caesar.RomanTexts.Add(caesar.Input);
+                caesar.RomanTexts.Add(caesar.Result);
                 AddRoman();
+            }
+            ResultTextBox.Text = caesar.Result;
+        }
+
+        //Криптоанализ
+        private void CryptButton_Click(object sender, EventArgs e)
+        {
+            CryptListBox.Items.Clear();
+            ResultTextBox.Text = "";
+            caesar.Result = "";
+            caesar.Input = InputTextBox.Text;
+            cryptanalysis.BeginCryptanalysis(caesar);
+
+            int[] convertedDistances = cryptanalysis.Distances.Cast<int>().ToArray();
+
+            var keys = convertedDistances.Where(str => convertedDistances.Count(s => s == str) > 1).Distinct();
+
+            foreach (int key in keys)
+            {
+                caesar.Decrypt(key);
+                CryptListBox.Items.Add(caesar.Result);
+                caesar.Result = "";
+            }
         }
         #endregion
 

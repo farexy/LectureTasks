@@ -60,21 +60,10 @@ namespace Task2
                         Result += Convert.ToChar(Input[i] + Key);
                 }
             }
-
-            if (Alph == "C")
-            {
-                CyrillicTexts.Add(Input);
-                CyrillicTexts.Add(Result);
-            }
-            else if (Alph == "R")
-            {
-                RomanTexts.Add(Input);
-                RomanTexts.Add(Result);
-            }
         }
 
         //Декодирование
-        public void Decrypt()
+        public void Decrypt(int key)
         {
             for (int i = 0; i < Input.Length; i++)
             {
@@ -88,33 +77,22 @@ namespace Task2
                 if (Alph == "C")
                 {
                     //Если буква после сдвига выходит за пределы алфавита
-                    if (Input[i] - Key < 1072)
-                        result += Convert.ToChar(Input[i] - Key + 32);
+                    if (Input[i] - key < 1072)
+                        result += Convert.ToChar(Input[i] - key + 32);
                     //Если буква может быть сдвинута в пределах алфавита
                     else
-                        result += Convert.ToChar(Input[i] - Key);
+                        result += Convert.ToChar(Input[i] - key);
                 }
                 //Если латиница
                 else if (Alph == "R")
                 {
                     //Если буква после сдвига выходит за пределы алфавита
-                    if (Input[i] - Key < 97)
-                        result += Convert.ToChar(Input[i] - Key + 26);
+                    if (Input[i] - key < 97)
+                        result += Convert.ToChar(Input[i] - key + 26);
                     //Если буква может быть сдвинута в пределах алфавита
                     else
-                        result += Convert.ToChar(Input[i] - Key);
+                        result += Convert.ToChar(Input[i] - key);
                 }
-            }
-
-            if (Alph == "C")
-            {
-                CyrillicTexts.Add(Input);
-                CyrillicTexts.Add(Result);
-            }
-            else if (Alph == "R")
-            {
-                RomanTexts.Add(Input);
-                RomanTexts.Add(Result);
             }
         }
     }
