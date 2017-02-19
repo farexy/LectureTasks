@@ -35,20 +35,23 @@ namespace Task2
                 if (freq.ContainsKey(letter) || letter == 32)
                     continue;
 
-                freq.Add(letter, input.Count(c => c == char.Parse(letter.ToString())));
+                freq.Add(letter, input.Count(c => c == letter));
             }
         }
 
-        //Получение четырех букв с максимальными частотами
+        //Получение букв с максимальными частотами
         private void GetMaxFreq()
         {
             do
             {
+                if (freq.Count == 0)
+                    break;
                 int max = freq.Max(s => s.Value);
                 List<char> buffer = freq.Where(s => s.Value.Equals(max)).Select(s => s.Key).ToList();
                 foreach (char letter in buffer)
                 {
-                    maxFreq.Add(letter, max);
+                    if (max > 2)
+                        maxFreq.Add(letter, max);
                     freq.Remove(letter);
                     if (maxFreq.Count == 4)
                         break;
@@ -62,7 +65,7 @@ namespace Task2
         {
             if (alph == "C")
             {
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < maxFreq.Count; i++)
                 {
                     for (int j = 0; j < 4; j++)
                     {
@@ -85,9 +88,9 @@ namespace Task2
                     }
                 }
             }
-            else
+            else if (alph == "R")
             {
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < maxFreq.Count; i++)
                 {
                     for (int j = 0; j < 4; j++)
                     {

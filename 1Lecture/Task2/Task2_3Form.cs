@@ -10,7 +10,7 @@ namespace Task2
     {
         private string regex; //Регулярное выражение
         Caesar caesar = new Caesar();
-        Cryptanalysis cryptanalysis = new Cryptanalysis();
+        Cryptanalysis cryptAnalysis = new Cryptanalysis();
 
         public Task2_3Form()
         {
@@ -118,9 +118,9 @@ namespace Task2
             ResultTextBox.Text = "";
             caesar.Result = "";
             caesar.Input = InputTextBox.Text;
-            cryptanalysis.BeginCryptanalysis(caesar);
+            cryptAnalysis.BeginCryptanalysis(caesar);
 
-            int[] convertedDistances = cryptanalysis.Distances.Cast<int>().ToArray();
+            int[] convertedDistances = cryptAnalysis.Distances.Cast<int>().ToArray();
 
             var keys = convertedDistances.Where(str => convertedDistances.Count(s => s == str) > 1).Distinct();
 
